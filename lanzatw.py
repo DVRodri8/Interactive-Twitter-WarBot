@@ -132,8 +132,8 @@ class Twitter():
     def sendTweets(self,carrera1,carrera2):
         tweet = self.api.update_status(f"La batalla ha comenzado:\nElige {carrera1} o {carrera2} dando like a uno de los tweets que hay en las respuestas de este tweet.\nEl que tenga más likes dentro de 24h será el ganador.")
         #almacenar el id y las carreras en la BD de alguna manera?¿
-        tweet_c1 = self.api.update_status(f"Like a este tweet para luchar en el bando de {carrera1}", in_reply_to_status_id=tweet.id)
-        tweet_c2 = self.api.update_status(f"Like a este tweet para luchar en el bando de {carrera2}", in_reply_to_status_id=tweet.id)
+        tweet_c1 = self.api.update_status(f"Like a este tweet para luchar en el bando de {carrera1}", in_reply_to_status_id=tweet.id,filename=self.getFoto(carrera1)
+        tweet_c2 = self.api.update_status(f"Like a este tweet para luchar en el bando de {carrera2}", in_reply_to_status_id=tweet.id,filename=self.getFoto(carrera2)
 
         self.db.store3TweetsId(tweet.id, tweet_c1.id, tweet_c2.id, carrera1, carrera2)
 
